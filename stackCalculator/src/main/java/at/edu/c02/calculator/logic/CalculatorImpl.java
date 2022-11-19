@@ -40,9 +40,9 @@ public class CalculatorImpl implements Calculator {
 	}
 
 	@Override
-	public double perform(Operation op, double a) throws CalculatorException {
+	public double performOne(Operation op) throws CalculatorException {
 
-		a = pop();
+		double a = pop();
 
 		switch (op) {
 			case sin:

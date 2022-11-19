@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calculation>
+	<push value="30" />
+	<operation value="sin" />
+	<push value="Result" />
+	<push value="-0.98803162409" />
+</calculation>
