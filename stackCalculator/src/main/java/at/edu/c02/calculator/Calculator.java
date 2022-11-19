@@ -12,6 +12,7 @@ public interface Calculator {
 	double pop() throws CalculatorException;
 	
 	double perform(Operation op) throws CalculatorException;
+	double perform(Operation op, double a) throws CalculatorException;
 	
 	void clear(); 
 }

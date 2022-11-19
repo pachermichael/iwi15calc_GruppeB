@@ -52,10 +52,54 @@ public class CalculatorTest {
 		assertEquals(3, result, 0);
 
 	}
-	
-	
-	
-	
+
+
+	@Test
+	public void testSimpleModOperation() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(5);
+		calc.push(2);
+		double result = calc.perform(Operation.mod);
+
+		assertEquals(1, result, 0);
+
+	}
+
+	@Test
+	public void testSimpleModOperation2() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(2484);
+		calc.push(231);
+		double result = calc.perform(Operation.mod);
+
+		assertEquals(174, result, 0);
+
+	}
+
+	@Test
+	public void testSimpleSineOperation() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(90);
+
+		double result = calc.perform(Operation.sin, 0);
+
+		assertEquals(Math.sin(90), result, 0);
+	}
+
+	@Test
+	public void testSimpleSineOperation2() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(180);
+
+		double result = calc.perform(Operation.sin, 0);
+
+		assertEquals(Math.sin(180), result, 0);
+	}
+
 
 	//
 	@Test(expected = CalculatorException.class)
@@ -83,6 +127,22 @@ public class CalculatorTest {
 			assertEquals("Division by zero", e.getMessage());
 			// e.getCause()
 		}
+	}
+	@Test
+	public void testModByZero() throws Exception {
+
+		Calculator calc = new CalculatorImpl();
+		try {
+			calc.push(2);
+			calc.push(0);
+			calc.perform(Operation.mod);
+
+
+		} catch (CalculatorException e) {
+			assertEquals("Modulo by zero", e.getMessage());
+		}
 
 	}
+
+
 }
