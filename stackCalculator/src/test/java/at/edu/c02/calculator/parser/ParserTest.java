@@ -65,7 +65,7 @@ public class ParserTest {
 		parser.parse(new File("src/test/resources/test07.xml"));
 
 		verify(cal).push(30.0);
-		verify(cal).performOne(Operation.sin);
+		verify(cal).perform(Operation.sin);
 
 		verifyNoMoreInteractions(cal);
 	}

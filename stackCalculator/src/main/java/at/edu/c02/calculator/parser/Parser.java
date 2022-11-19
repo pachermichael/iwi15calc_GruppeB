@@ -39,8 +39,7 @@ public class Parser {
 				} else {
 					calc_.push(Double.parseDouble(value));
 				}
-			} else if ("pop"
-					.equals(e.asStartElement().getName().getLocalPart())) {
+			} else if ("pop".equals(e.asStartElement().getName().getLocalPart())) {
 				calc_.pop();
 			} else if ("operation".equals(e.asStartElement().getName()
 					.getLocalPart())) {
