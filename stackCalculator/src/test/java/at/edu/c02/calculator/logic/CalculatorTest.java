@@ -100,6 +100,42 @@ public class CalculatorTest {
 		assertEquals(Math.cos(90), result, 0);
 	}
 
+	@Test
+	public void testSimpleScalarOperation() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(1);
+		calc.push(3);
+
+		calc.push(2);
+		calc.push(4);
+
+		calc.push(2);
+
+		double result = calc.perform(Operation.scalar);
+
+		assertEquals(14, result, 0);
+	}
+
+	@Test
+	public void testSimpleScalarOperation2() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(1);
+		calc.push(3);
+		calc.push(5);
+
+		calc.push(2);
+		calc.push(4);
+		calc.push(6);
+
+		calc.push(-5);
+
+		double result = calc.perform(Operation.scalar);
+
+		assertEquals(14, result, 0);
+	}
+
 
 	//
 	@Test(expected = CalculatorException.class)

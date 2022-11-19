@@ -14,6 +14,8 @@ public class CalculatorImpl implements Calculator {
 	@Override
 	public double perform(Operation op) throws CalculatorException {
 
+		//Anpassung der perform für sin, cos, scalar
+
 		if (op.name().equals("sin") || op.name().equals("cos")) {
 			double a = pop();
 
@@ -47,21 +49,21 @@ public class CalculatorImpl implements Calculator {
 			Vector<Double> vector2 = new Vector<Double>();
 
 			double dimension = stack_.pop();
+			if(dimension < 0){
+				throw new CalculatorException("dimension smaller zero");
+			}
 			double dotproduct = 0;
 
 			for (int i = 0; i < dimension; i++) {
-				if(!stack_.isEmpty()){
-					vector1.add(stack_.pop());
-				}
+					vector1.add(pop());
 			}
 			for (int i = 0; i < dimension; i++) {
-				if(!stack_.isEmpty()){
-					vector2.add(stack_.pop());
-				}
+					vector2.add(pop());
 			}
 
+			//Berechnung des Skalarproducts
 			for (int i = 0; i < vector1.size(); i++) {
-				dotproduct += vector1.elementAt(i) * vector1.elementAt(i);
+				dotproduct += vector1.elementAt(i) * vector2.elementAt(i);
 			}
 
 			return dotproduct;
