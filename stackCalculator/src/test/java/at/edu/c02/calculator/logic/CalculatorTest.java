@@ -90,14 +90,14 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testSimpleSineOperation2() throws Exception{
+	public void testSimpleCosinusOperation() throws Exception{
 
 		Calculator calc = new CalculatorImpl();
-		calc.push(180);
+		calc.push(90);
 
-		double result = calc.perform(Operation.sin, 0);
+		double result = calc.perform(Operation.cos, 0);
 
-		assertEquals(Math.sin(180), result, 0);
+		assertEquals(Math.cos(90), result, 0);
 	}
 
 
