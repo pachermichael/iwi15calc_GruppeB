@@ -40,6 +40,20 @@ public class CalculatorImpl implements Calculator {
 	}
 
 	@Override
+	public double perform(Operation op, double a) throws CalculatorException {
+
+		a = pop();
+
+		switch (op) {
+			case sin:
+				return Math.sin(a);
+			case cos:
+				return Math.cos(a);
+		}
+		return 0;
+	}
+
+	@Override
 	public double pop() throws CalculatorException {
 		if (stack_.isEmpty())
 			throw new CalculatorException();
