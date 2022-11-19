@@ -13,45 +13,45 @@ public class CalculatorImpl implements Calculator {
 	@Override
 	public double perform(Operation op) throws CalculatorException {
 
-		double b = pop();
-		double a = pop();
+		if (op.name().equals("sin") || op.name().equals("cos")) {
+			double a = pop();
 
-		switch (op) {
-		case add:
-			return a + b;
-		case sub:
-			return a - b;
-		case div:
-			double c = a / b;
-			if (Double.isInfinite(c))
-				throw new CalculatorException("Division by zero");
-			return c;
-		case mul:
-			return a * b;
-		case mod:
-			return a % b;
-		case sin:
-			return Math.sin(a);
-		case cos:
-			return Math.cos(a);
+			switch (op) {
+				case sin:
+					return Math.sin(a);
+				case cos:
+					return Math.cos(a);
+			}
+			return 0;
+		}else{
+			double b = pop();
+			double a = pop();
+
+			switch (op) {
+				case add:
+					return a + b;
+				case sub:
+					return a - b;
+				case div:
+					double c = a / b;
+					if (Double.isInfinite(c))
+						throw new CalculatorException("Division by zero");
+					return c;
+				case mul:
+					return a * b;
+				case mod:
+					return a % b;
+				case sin:
+					return Math.sin(a);
+				case cos:
+					return Math.cos(a);
+
+			}
+			return 0;
 
 		}
-		return 0;
 	}
 
-	@Override
-	public double performOne(Operation op) throws CalculatorException {
-
-		double a = pop();
-
-		switch (op) {
-			case sin:
-				return Math.sin(a);
-			case cos:
-				return Math.cos(a);
-		}
-		return 0;
-	}
 
 	@Override
 	public double pop() throws CalculatorException {

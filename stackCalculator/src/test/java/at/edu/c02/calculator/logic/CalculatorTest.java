@@ -84,7 +84,7 @@ public class CalculatorTest {
 		Calculator calc = new CalculatorImpl();
 		calc.push(90);
 
-		double result = calc.performOne(Operation.sin);
+		double result = calc.perform(Operation.sin);
 
 		assertEquals(Math.sin(90), result, 0);
 	}
@@ -95,7 +95,7 @@ public class CalculatorTest {
 		Calculator calc = new CalculatorImpl();
 		calc.push(90);
 
-		double result = calc.performOne(Operation.cos);
+		double result = calc.perform(Operation.cos);
 
 		assertEquals(Math.cos(90), result, 0);
 	}

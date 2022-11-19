@@ -30,6 +30,7 @@ public class Parser {
 
 		while (r.hasNext()) {
 			XMLEvent e = r.nextEvent();
+
 			Attribute attribute = e.asStartElement().getAttributeByName(
 					new QName("value"));
 			String value = attribute != null ? attribute.getValue() : "";
@@ -41,11 +42,11 @@ public class Parser {
 				}
 			} else if ("pop".equals(e.asStartElement().getName().getLocalPart())) {
 				calc_.pop();
-			} else if ("operation".equals(e.asStartElement().getName()
-					.getLocalPart())) {
+			} else if ("operation".equals(e.asStartElement().getName().getLocalPart())) {
 				result = calc_.perform(readOperation(value));
 			}
 		}
+
 
 		return result;
 	}

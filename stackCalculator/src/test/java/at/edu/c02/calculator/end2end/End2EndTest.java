@@ -41,4 +41,17 @@ public class End2EndTest {
         //verify
         assertEquals(1, result, 0);
     }
+
+    @Test
+    public void testMultipleOperations3() throws Exception {
+
+        //setup
+        Calculator calc = new CalculatorImpl();
+        Parser parser = new Parser(calc);
+        //execute
+        double result = parser.parse(new File("src/test/resources/test08.xml"));
+
+        //verify
+        assertEquals(Math.sin(90), result, 0);
+    }
 }
