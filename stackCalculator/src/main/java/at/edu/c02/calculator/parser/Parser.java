@@ -66,7 +66,7 @@ public class Parser {
 						calc_.store(result);
 					}
 				}break;
-				case "calculation": ;break;
+				case "calculation": break;
 				default:
 					System.out.println("Invalid input in xml-file.Value:"+part);
 			}

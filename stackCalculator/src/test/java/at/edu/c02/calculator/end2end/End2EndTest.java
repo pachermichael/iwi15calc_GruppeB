@@ -1,15 +1,10 @@
 package at.edu.c02.calculator.end2end;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import at.edu.c02.calculator.StorageException;
 import at.edu.c02.calculator.parser.Parser;
 import org.junit.Test;
-
 import at.edu.c02.calculator.Calculator;
-import at.edu.c02.calculator.CalculatorException;
-import at.edu.c02.calculator.Calculator.Operation;
 import at.edu.c02.calculator.logic.CalculatorImpl;
 
 import java.io.File;

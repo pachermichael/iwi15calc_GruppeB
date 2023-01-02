@@ -8,7 +8,6 @@ import static org.mockito.Mockito.*;
 
 import at.edu.c02.calculator.Calculator;
 import at.edu.c02.calculator.Calculator.Operation;
-import at.edu.c02.calculator.parser.Parser;
 
 public class ParserTest {
 

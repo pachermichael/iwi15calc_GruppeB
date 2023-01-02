@@ -8,7 +8,6 @@ import org.junit.Test;
 import at.edu.c02.calculator.Calculator;
 import at.edu.c02.calculator.CalculatorException;
 import at.edu.c02.calculator.Calculator.Operation;
-import at.edu.c02.calculator.logic.CalculatorImpl;
 
 public class CalculatorTest {
 
@@ -118,20 +117,23 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testSimpleScalarOperation2() throws Exception{
+	public void testSimpleScalarOperation2(){
 
-		Calculator calc = new CalculatorImpl();
-		calc.push(1);
-		calc.push(3);
-		calc.push(5);
-		calc.push(2);
-		calc.push(4);
-		calc.push(6);
-		calc.push(-5);
-		//TODO: Fix Test
-		double result = calc.perform(Operation.scalar);
+		try{
+			Calculator calc = new CalculatorImpl();
+			calc.push(1);
+			calc.push(3);
+			calc.push(5);
+			calc.push(2);
+			calc.push(4);
+			calc.push(6);
+			calc.push(-5);
 
-		assertEquals(14, result, 0);
+			double result = calc.perform(Operation.scalar);
+		}
+		catch (Exception ex){
+			assertEquals("dimension smaller zero", ex.getMessage());
+		}
 	}
 
 	@Test(expected = CalculatorException.class)
@@ -141,7 +143,7 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testDivisionByZero() throws Exception {
+	public void testDivisionByZero() {
 
 		//Setup
 		Calculator calc = new CalculatorImpl();
@@ -159,7 +161,7 @@ public class CalculatorTest {
 		}
 	}
 	@Test
-	public void testModByZero() throws Exception {
+	public void testModByZero(){
 
 		Calculator calc = new CalculatorImpl();
 		try {

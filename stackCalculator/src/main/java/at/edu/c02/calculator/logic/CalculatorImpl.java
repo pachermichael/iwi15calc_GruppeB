@@ -10,7 +10,7 @@ import at.edu.c02.calculator.StorageException;
 
 public class CalculatorImpl implements Calculator {
 
-	private Stack<Double> stack_ = new Stack<Double>();
+	private Stack<Double> stack_ = new Stack<>();
 	private Storage storage_ = new Storage();
 
 	@Override

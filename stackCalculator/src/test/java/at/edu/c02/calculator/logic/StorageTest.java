@@ -37,7 +37,7 @@ public class StorageTest {
 	}
 
 	@Test
-	public void test() throws Exception {
+	public void testStorageWithNoKey() {
 		Storage storage = new Storage();
 		double value = 0;
 		try {
