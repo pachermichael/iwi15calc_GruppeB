@@ -22,7 +22,7 @@ public class Storage {
     public double load(){return values.get("_first_");}
 
     public double load(String name) throws StorageException{
-        double value = 0;
+        double value;
         try{
             value = values.get(name);
         }
