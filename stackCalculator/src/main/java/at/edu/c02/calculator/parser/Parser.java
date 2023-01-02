@@ -11,11 +11,10 @@ import javax.xml.stream.events.*;
 import at.edu.c02.calculator.Calculator;
 import at.edu.c02.calculator.CalculatorException;
 import at.edu.c02.calculator.Calculator.Operation;
+import at.edu.c02.calculator.StorageException;
 
 public class Parser {
-
 	private Calculator calc_;
-
 	public Parser(Calculator cal) {
 		if (cal == null)
 			throw new IllegalArgumentException("Calculator not set");
@@ -23,7 +22,7 @@ public class Parser {
 	}
 
 	public double parse(File calculation) throws FileNotFoundException,
-			XMLStreamException, CalculatorException {
+			XMLStreamException, CalculatorException, StorageException {
 
 		double result = 0;
 		XMLEventReader r = createXmlEventReader(calculation);
@@ -34,20 +33,44 @@ public class Parser {
 			Attribute attribute = e.asStartElement().getAttributeByName(
 					new QName("value"));
 			String value = attribute != null ? attribute.getValue() : "";
-			if ("push".equals(e.asStartElement().getName().getLocalPart())) {
-				if ("Result".equalsIgnoreCase(value)) {
-					calc_.push(result);
-				} else {
-					calc_.push(Double.parseDouble(value));
+
+			String part = e.asStartElement().getName().getLocalPart();
+
+			switch (part){
+				case "push":
+				{
+					if ("Result".equalsIgnoreCase(value)) {
+						calc_.push(result);
+					} else {
+						calc_.push(Double.parseDouble(value));
+					}
+					break;
 				}
-			} else if ("pop".equals(e.asStartElement().getName().getLocalPart())) {
-				calc_.pop();
-			} else if ("operation".equals(e.asStartElement().getName().getLocalPart())) {
-				result = calc_.perform(readOperation(value));
+				case "pop": calc_.pop(); break;
+				case "operation": result = calc_.perform(readOperation(value));break;
+				case "load":
+				{
+					if(!value.isEmpty()){
+						result = calc_.load(value);
+					}
+					else{
+						result = calc_.load();
+					}
+				}break;
+				case "store":
+				{
+					if(!value.isEmpty()){
+						calc_.store(result,value);
+					}
+					else{
+						calc_.store(result);
+					}
+				}break;
+				case "calculation": ;break;
+				default:
+					System.out.println("Invalid input in xml-file.Value:"+part);
 			}
 		}
-
-
 		return result;
 	}
 

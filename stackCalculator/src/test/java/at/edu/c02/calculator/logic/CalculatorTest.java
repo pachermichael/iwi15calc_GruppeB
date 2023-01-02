@@ -124,28 +124,20 @@ public class CalculatorTest {
 		calc.push(1);
 		calc.push(3);
 		calc.push(5);
-
 		calc.push(2);
 		calc.push(4);
 		calc.push(6);
-
 		calc.push(-5);
-
-
 		//TODO: Fix Test
-		//double result = calc.perform(Operation.scalar);
+		double result = calc.perform(Operation.scalar);
 
-		//assertEquals(14, result, 0);
+		assertEquals(14, result, 0);
 	}
 
-
-	//
 	@Test(expected = CalculatorException.class)
 	public void testPopOnEmptyStack() throws Exception {
-
 		Calculator calc = new CalculatorImpl();
 		calc.pop();
-
 	}
 
 	@Test
@@ -175,12 +167,8 @@ public class CalculatorTest {
 			calc.push(0);
 			calc.perform(Operation.mod);
 
-
 		} catch (CalculatorException e) {
 			assertEquals("Modulo by zero", e.getMessage());
 		}
-
 	}
-
-
 }

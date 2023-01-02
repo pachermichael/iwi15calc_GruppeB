@@ -5,11 +5,13 @@ import java.util.Vector;
 
 import at.edu.c02.calculator.Calculator;
 import at.edu.c02.calculator.CalculatorException;
+import at.edu.c02.calculator.StorageException;
 
 
 public class CalculatorImpl implements Calculator {
 
 	private Stack<Double> stack_ = new Stack<Double>();
+	private Storage storage_ = new Storage();
 
 	@Override
 	public double perform(Operation op) throws CalculatorException {
@@ -90,10 +92,8 @@ public class CalculatorImpl implements Calculator {
 					return Math.sin(a);
 				case cos:
 					return Math.cos(a);
-
 			}
 			return 0;
-
 		}
 	}
 
@@ -109,7 +109,14 @@ public class CalculatorImpl implements Calculator {
 	public void push(double v) {
 		stack_.push(v);
 	}
-
+	@Override
+	public void store(double value) {storage_.store(value);}
+	@Override
+	public void store(double value, String name) { storage_.store(value,name);}
+	@Override
+	public double load(String name) throws StorageException {return storage_.load(name);}
+	@Override
+	public double load() {return storage_.load();}
 	@Override
 	public void clear() {
 		stack_.clear();
