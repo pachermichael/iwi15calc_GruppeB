@@ -9,16 +9,12 @@ public class CalculatorException extends Exception {
 
 	public CalculatorException() {
 	}
-
 	public CalculatorException(String arg0) {
 		super(arg0);
 	}
-
-	
 	public CalculatorException(Throwable arg0) {
 		super(arg0);
 	}
-
 	public CalculatorException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
 	}
