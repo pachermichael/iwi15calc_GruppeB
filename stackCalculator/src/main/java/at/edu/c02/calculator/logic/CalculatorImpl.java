@@ -28,7 +28,7 @@ public class CalculatorImpl implements Calculator {
 					return Math.cos(a);
 			}
 			return 0;
-		}else if(op.name().equals("scalar")){
+		}else if(op.name().equals("dotproduct")){
 
 			/**
 			 Erklärung:

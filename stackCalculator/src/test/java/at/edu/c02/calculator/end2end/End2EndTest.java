@@ -86,4 +86,16 @@ public class End2EndTest {
             assertEquals("No value with this key found.", e.getMessage());
         }
     }
+
+    @Test
+    public void testdotproduct() throws Exception{
+        //setup
+        Calculator calc = new CalculatorImpl();
+        Parser parser = new Parser(calc);
+        //execute
+        double result = parser.parse(new File("src/test/resources/test12.xml"));
+
+        //verify
+        assertEquals(44, result, 0);
+    }
 }

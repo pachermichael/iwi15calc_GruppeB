@@ -1,13 +1,12 @@
 package at.edu.c02.calculator.logic;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 import at.edu.c02.calculator.Calculator;
 import at.edu.c02.calculator.CalculatorException;
 import at.edu.c02.calculator.Calculator.Operation;
+
+import static org.junit.Assert.*;
 
 public class CalculatorTest {
 
@@ -78,6 +77,18 @@ public class CalculatorTest {
 	}
 
 	@Test
+	public void testSimpleModOperation2Failed() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(2484);
+		calc.push(231);
+		double result = calc.perform(Operation.mod);
+
+		assertFalse(result == 100);
+
+	}
+
+	@Test
 	public void testSimpleSineOperation() throws Exception{
 
 		Calculator calc = new CalculatorImpl();
@@ -100,6 +111,17 @@ public class CalculatorTest {
 	}
 
 	@Test
+	public void testSimpleCosinusOperationFailed() throws Exception{
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(80);
+
+		double result = calc.perform(Operation.cos);
+
+		assertFalse(result == Math.cos(90));
+	}
+
+	@Test
 	public void testSimpleScalarOperation() throws Exception{
 
 		Calculator calc = new CalculatorImpl();
@@ -111,13 +133,30 @@ public class CalculatorTest {
 
 		calc.push(2);
 
-		double result = calc.perform(Operation.scalar);
+		double result = calc.perform(Operation.dotproduct);
 
 		assertEquals(14, result, 0);
 	}
 
 	@Test
-	public void testSimpleScalarOperation2(){
+	public void testSimpleScalarOperation2() throws CalculatorException {
+
+			Calculator calc = new CalculatorImpl();
+			calc.push(1);
+			calc.push(3);
+			calc.push(5);
+
+			calc.push(2);
+			calc.push(4);
+			calc.push(6);
+
+			calc.push(3);
+			double result = calc.perform(Operation.dotproduct);
+			assertEquals(44, result, 0);
+	}
+
+	@Test
+	public void testSimpleScalarOperationFailed(){
 
 		try{
 			Calculator calc = new CalculatorImpl();
@@ -127,9 +166,8 @@ public class CalculatorTest {
 			calc.push(2);
 			calc.push(4);
 			calc.push(6);
-			calc.push(-5);
-
-			double result = calc.perform(Operation.scalar);
+			calc.push(-2);
+			double result = calc.perform(Operation.dotproduct);
 		}
 		catch (Exception ex){
 			assertEquals("dimension smaller zero", ex.getMessage());
