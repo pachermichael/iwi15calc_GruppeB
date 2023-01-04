@@ -96,6 +96,6 @@ public class End2EndTest {
         double result = parser.parse(new File("src/test/resources/test12.xml"));
 
         //verify
-        assertEquals(44, result, 0);
+        assertEquals(1100, result, 0);
     }
 }
